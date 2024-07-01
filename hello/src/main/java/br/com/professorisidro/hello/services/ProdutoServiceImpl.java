@@ -1,9 +1,10 @@
 package br.com.professorisidro.hello.services;
 
 import br.com.professorisidro.hello.model.Produto;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ProdutoServiceImpl implements IProdutoService {
-
     @Override
     public Produto aplicarDesconto(Produto prod, double percentual) {
         double novoPreco = prod.getPreco() - prod.getPreco() * percentual / 100;

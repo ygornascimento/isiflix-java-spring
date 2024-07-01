@@ -3,6 +3,7 @@ package br.com.professorisidro.hello.controller;
 import br.com.professorisidro.hello.model.Produto;
 import br.com.professorisidro.hello.services.IProdutoService;
 import br.com.professorisidro.hello.services.ProdutoServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,7 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ProdutoController {
-    IProdutoService ips = new ProdutoServiceImpl();
+    @Autowired
+    IProdutoService ips;
 
     @GetMapping("/produto")
     public Produto recuperarProduto() {
