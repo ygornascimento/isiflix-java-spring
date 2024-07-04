@@ -1,6 +1,8 @@
 package br.com.professorisidro.projetoempresa.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity                         //para indicar que a classe corresponde a uma enitdade armazenável
 @Table(name = "departamento")   //para especificar o nome da tabela (pq não conhicide com o nome da classe)
@@ -15,6 +17,18 @@ public class Departamento {
 
     @Column(name = "andar", nullable = false)
     private int andar;
+
+    @OneToMany(mappedBy = "depto", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("dpto")
+    private List<Funcionario> listaFuncionarios;
+
+    public List<Funcionario> getListaFuncionarios() {
+        return listaFuncionarios;
+    }
+
+    public void setListaFuncionarios(List<Funcionario> listaFuncionarios) {
+        this.listaFuncionarios = listaFuncionarios;
+    }
 
     public int getNumeroId() {
         return numeroId;
